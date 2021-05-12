@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/style/StyleSheet1.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <ul>
+        <li> <a href="https://localhost:44318/Register/CreateAcc">Register </a></li>
+        <li> <a href=" https://localhost:44318/Login/Login"> Login </a> </li><!-- create drop down for employee or employer-->
+        <li class="last-item"> Contact </li>
+    </ul>
+
+    <h1 class=" main-heading">
+        Work Portal<br />
+
+        <span>
+            The simple way to organise your work day
+        </span>
+
+    </h1>
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+</body>
+</html>

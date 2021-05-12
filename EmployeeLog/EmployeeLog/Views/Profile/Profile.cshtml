@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+
+
+
+<form action="ProfileView" method="post" id="profile-form">
+
+    
+
+        <div class="profile-btns">
+
+
+
+
+
+            <ul>
+                <li> Weekly Rota</li>    <!-- remember to put link in for next page <a href="https://localhost:44318/Register/CreateAcc"></a> -->
+                <li>Calender</li>
+                <li>Notices </li>
+                <li>Employer contact</li>
+            </ul>
+        </div>
+        <div class="employee-info">
+
+            <h2>Employee Information</h2>
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+            <h2> Hi @Session["UserName"]</h2>
+        </div>
+
+
+
+
+
+
+</form>
+

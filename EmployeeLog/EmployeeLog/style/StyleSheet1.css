@@ -1,0 +1,148 @@
+﻿body {
+    background-color: #2e64a1;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23ea3f09' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+    /*#2E64A1*/
+}
+    ul {
+
+    list-style-type: none;
+    margin: 0px;
+    padding: 5px;
+    overflow: hidden;
+    background-color: grey;
+    height: 30px;
+}
+
+li {
+    font-size: 20px;
+    display: inline;
+    padding: 15px 18px;
+    background-color: #808080;
+}
+    li.last-item {
+        float: right;
+        padding: 6px 21px 14px 20px;
+        margin: -4px
+    }
+
+    li:hover {
+        background-color: #EA3F09;
+    }
+
+    
+
+
+button {
+    font-size: 15px;
+    overflow: inherit;
+    background-color: grey;
+    border: solid grey;
+    border-radius: 5px;
+    height: 25px;
+    outline: none;
+}
+
+.main-heading {
+    background-color: #EA3F09;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 15px;
+    color: #2E64A1 /*#3A5646*/;
+    font-size: 40px;
+    font-weight: 700px;
+    height: 190px;
+   
+}
+
+    .main-heading > span {
+        font-size: 20px;
+        color: white;
+        
+    }
+
+    .login {
+    
+       align-content: center;
+    }
+    
+    a {
+        font-size: 20px;
+        color: black;
+        text-decoration: none;
+
+    }
+
+
+
+    /* practice css for login html*/
+#main-holder {
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px 10px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: #3a3a3a;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 0px 0px 5px 2px black;
+}
+
+#login-form {
+    
+    align-self: center;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.login-form-field {
+    border: none;
+    border-bottom: 1px solid #3a3a3a;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    outline: none;
+    padding: 0px 0px 5px 5px;
+}
+
+.profile-btns {
+    list-style-type: none;
+    width:auto;
+    text-align:center;
+    font-size:small;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: grey;
+    height: 38px;
+}
+
+
+.employee-info {
+    background-color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: 400px;
+
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+
+}
+img {
+    width:200px;
+    height: 170px;
+}
+
+ 
+
+
+
+  
+
