@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.SqlClient;
 using EmployeeLog.Models;
 using EmployeeLog.Data;
+using System.Data;
 
 namespace EmployeeLog.Controllers
 {
@@ -47,9 +48,11 @@ namespace EmployeeLog.Controllers
 
                 }
             }
-            return View("CreateAcc");
+            
 
-           
+            ViewData["Error"] = "Password must be at least 8 characters long";
+            return View("CreateAcc");
+                      
             
         }
 

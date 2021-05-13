@@ -17,8 +17,14 @@
                     <h1 id="login-header">Create Account</h1>
 
                     <!-- <div id="login-error-msg-holder">
-                <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
-            </div> -->
+        <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+    </div> -->
+                    @{ if(ViewData["Error"] != null) 
+                        {
+                               <p class="login-error-msg"> @ViewData["Error"] </p>
+                         }
+
+                    }
 
                     <form action="CreateUser" method="post" id="login-form">
                         <input type="text" name="FirstName" id="firstname-field" class="login-form-field" placeholder="firstname">

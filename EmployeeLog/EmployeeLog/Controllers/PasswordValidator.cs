@@ -11,7 +11,7 @@ namespace EmployeeLog.Controllers
         private bool RequiredNonLetterOrDigit { get; set; }
         private bool RequiredUpperCase { get; set; }
         private bool RequiredLowercase { get; set; }
-
+       
 
         public PasswordValidator()
         {

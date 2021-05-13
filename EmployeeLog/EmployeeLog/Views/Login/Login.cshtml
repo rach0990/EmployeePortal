@@ -14,7 +14,16 @@
             <div class="login">
                 <h1 id="login-header">Sign In</h1>
 
-                <!-- <div id="login-error-msg-holder">
+                @{ if(ViewData["Invalid"] != null)
+                    {
+                        <p class="login-error-msg">@ViewData["Invalid"]</p>
+                    }
+
+                }
+
+
+
+                <!--<div id="login-error-msg-holder">
              <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
          </div> -->
 
