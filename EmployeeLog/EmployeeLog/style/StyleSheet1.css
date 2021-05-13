@@ -52,9 +52,7 @@ button {
     padding: 15px;
     color: #2E64A1 /*#3A5646*/;
     font-size: 40px;
-    font-weight: 700px;
-    height: 190px;
-   
+    height: 140px;
 }
 
     .main-heading > span {
@@ -63,6 +61,27 @@ button {
         
     }
 
+.main-page-fill {
+    display: grid;
+    grid-template-columns: 60% auto;
+    grid-column-gap: 1%;
+    grid-row-gap: 20px;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+
+p{
+    font-size:small;
+}
     .login {
     
        align-content: center;
