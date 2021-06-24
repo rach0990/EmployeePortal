@@ -13,5 +13,7 @@ namespace EmployeeLog.Models
         public string FirstName { get; set; }
 
         public string Surname { get; set; }
+
+        public bool IsEmployer { get; set; }
     }
 }

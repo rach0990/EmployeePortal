@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "EmployerProfile";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+
+
+    <form action="ProfileView" method="post" id="profile-form">
+
+        <div class="profile-btns">
+            <ul>
+                <li>Create</li> <!--create drop down menu for rotas and new schedules i.e cleaning?-->
+                <li>Notices</li><!--allow notices to upload to employer profiles?-->
+                <li>Approve</li><!--view requested holidays from employers?-->
+            </ul>
+        </div>
+        <div class="employee-info">
+            <h2>Employer Information</h2>
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+            <h2> Hi @Session["UserName"]</h2>
+
+        </div>
+    </form>
+

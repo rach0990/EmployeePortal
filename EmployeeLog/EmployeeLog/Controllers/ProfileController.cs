@@ -20,6 +20,15 @@ namespace EmployeeLog.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult EmployerProfile()
+        {
+            return View();
+
+        }
+
+
         [HttpPost]
         public ActionResult ProfileView(Account acc)
         {

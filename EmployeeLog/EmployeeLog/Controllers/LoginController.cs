@@ -31,11 +31,18 @@ namespace EmployeeLog.Controllers
 
             if (result != "Error")
             {
+                //go to database
+                bool IsEmployer = db.IsEmployer(acc);
+
+                if (IsEmployer == true)
+                {
+                    return RedirectToAction("EmployerProfile", "Profile");
+                }               
+
+                //else carry on as before
                 Session["UserName"] = acc.Name;
 
                 return RedirectToAction("Profile", "Profile");
-
-
 
 
             }

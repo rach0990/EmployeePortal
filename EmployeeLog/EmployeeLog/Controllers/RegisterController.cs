@@ -15,9 +15,7 @@ namespace EmployeeLog.Controllers
         // GET: Register
      
 
-        SqlConnection con = new SqlConnection();
-        SqlCommand com = new SqlCommand();
-        SqlDataReader dr;
+       
 
 
         [HttpGet]
@@ -40,14 +38,23 @@ namespace EmployeeLog.Controllers
                     DatabaseConnect regDb = new DatabaseConnect();
                     string result = regDb.CreateUser(acc);
 
-                    if (result != "Error")
-                    {
 
-                        return View("~/Views/Account/Create.cshtml");
+                    if (result != "Error") 
+                    {
+                        if(acc.IsEmployer == true)
+                        {
+                            //employer box ticked go to employers profile
+                            return RedirectToAction("EmployerProfile", "Profile");
+                        }
+
+                        return RedirectToAction("Profile", "Profile");
                     }
 
+
                 }
+
             }
+
             
 
             ViewData["Error"] = "Password must be at least 8 characters long";
