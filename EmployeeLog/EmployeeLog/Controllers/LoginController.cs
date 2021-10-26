@@ -20,8 +20,6 @@ namespace EmployeeLog.Controllers
             return View();
         }
 
-
-
         [HttpPost]
         public ActionResult Verify(Account acc)
         {
@@ -40,7 +38,7 @@ namespace EmployeeLog.Controllers
                 }               
 
                 //else carry on as before
-                Session["UserName"] = acc.Name;
+                Session["UserName"] = acc.FirstName;
 
                 return RedirectToAction("Profile", "Profile");
 

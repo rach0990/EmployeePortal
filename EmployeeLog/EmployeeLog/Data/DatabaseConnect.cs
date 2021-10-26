@@ -8,7 +8,7 @@ using EmployeeLog.Models;
 
 namespace EmployeeLog.Data
 {
-    public class DatabaseConnect
+    public class DatabaseConnect : IDatabaseConnect
     {
         SqlConnection connection = new SqlConnection();
         SqlCommand com = new SqlCommand();
@@ -16,7 +16,7 @@ namespace EmployeeLog.Data
 
         void ConnectionString()
         {
-            connection.ConnectionString = "Data Source=LIANNE-PC;database=LoginDataBase;integrated security=SSPI;";
+            connection.ConnectionString = "Data Source=LAPTOP-KJ7R0I6R;database=LoginDataBase;integrated security=SSPI;";
         }
 
         //log in account
@@ -25,13 +25,13 @@ namespace EmployeeLog.Data
             ConnectionString();
             connection.Open();
             com.Connection = connection;
-            com.CommandText = "select * from dbo.UserDetails where UserName='" + acc.Name + "' and Password='" + acc.Password + "'";
+            com.CommandText = "select * from dbo.UserDetails where UserName='" + acc.FirstName + "' and Password='" + acc.Password + "'";
             dr = com.ExecuteReader();
 
             if (dr.Read())
             {                
                 connection.Close();
-                return acc.Name;
+                return acc.FirstName;
 
             }
             else
@@ -45,7 +45,7 @@ namespace EmployeeLog.Data
             ConnectionString();
             connection.Open();
             com.Connection = connection;
-            com.CommandText = "select IsEmployer from dbo.UserDetails where UserName='" + acc.Name + "' and Password='" + acc.Password + "'";
+            com.CommandText = "select IsEmployer from dbo.UserDetails where UserName='" + acc.FirstName + "' and Password='" + acc.Password + "'";
           
             using (var reader = com.ExecuteReader())
             {
@@ -77,7 +77,7 @@ namespace EmployeeLog.Data
                 ConnectionString();
                 connection.Open();
                 com.Connection = connection;
-                com.CommandText = "INSERT INTO UserDetails([UserName], [Password], [FirstName], [Surname], [IsEmployer]) VALUES ('" + acc.Name + "', '" + acc.Password + "','" + acc.FirstName + "', '" + acc.Surname + "' , '"+acc.IsEmployer+ "' )";
+                com.CommandText = "INSERT INTO UserDetails([UserName], [Password], [FirstName], [Surname], [IsEmployer]) VALUES ('" + acc.FirstName + "', '" + acc.Password + "','" + acc.FirstName + "', '" + acc.Surname + "' , '"+acc.IsEmployer+ "' )";
 
                 dr = com.ExecuteReader();
 

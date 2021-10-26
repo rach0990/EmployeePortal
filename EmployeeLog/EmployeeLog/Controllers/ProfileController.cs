@@ -32,11 +32,10 @@ namespace EmployeeLog.Controllers
         [HttpPost]
         public ActionResult ProfileView(Account acc)
         {
-            ViewData["FirstName"] = acc.Name;
+            ViewData["FirstName"] = acc.FirstName;
 
             return View();
         }
-
-        
+       
     }
 }

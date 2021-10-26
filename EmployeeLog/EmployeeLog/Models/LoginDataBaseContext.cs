@@ -26,7 +26,7 @@ namespace EmployeeLog.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=LIANNE-PC;database=LoginDataBase;integrated security=SSPI;");
+                optionsBuilder.UseSqlServer("Data Source=LAPTOP-KJ7R0I6R;database=LoginDataBase;integrated security=SSPI;");
             }
         }
 
