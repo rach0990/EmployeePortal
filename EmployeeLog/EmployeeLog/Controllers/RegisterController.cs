@@ -33,7 +33,7 @@ namespace EmployeeLog.Controllers
 
             if (reqLength.IsValid(acc.Password))
             {
-                if (acc.Name != null)
+                if (acc.UserName != null)
                 {
                     DatabaseConnect regDb = new DatabaseConnect();
                     string result = regDb.CreateUser(acc);
@@ -50,13 +50,10 @@ namespace EmployeeLog.Controllers
                         return RedirectToAction("Profile", "Profile");
                     }
 
-
+                   
                 }
 
             }
-
-            
-
             ViewData["Error"] = "Password must be at least 8 characters long";
             return View("CreateAcc");
                       

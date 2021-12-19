@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace EmployeeLog.Controllers
 {
@@ -32,5 +34,16 @@ namespace EmployeeLog.Controllers
                 return true;           
 
         }
+        public bool IsUpperCase(string password)
+        {
+            
+          // LINQ helper returns true is uppercase is present
+            return password.Any(c => char.IsUpper(c)); 
+
+        }
+
+      
     }
+
+
 }

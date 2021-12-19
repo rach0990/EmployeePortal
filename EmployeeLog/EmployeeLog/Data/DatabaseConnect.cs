@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using EmployeeLog.Models;
-
+using System.Web.UI.WebControls.WebParts;
 
 namespace EmployeeLog.Data
 {
@@ -20,51 +20,43 @@ namespace EmployeeLog.Data
         }
 
         //log in account
-        public string Verify(Account acc)//void replaced actionresult
+        public string Verify(Account acc)
         {
-            ConnectionString();
-            connection.Open();
-            com.Connection = connection;
-            com.CommandText = "select * from dbo.UserDetails where UserName='" + acc.Name + "' and Password='" + acc.Password + "'";
-            dr = com.ExecuteReader();
 
-            if (dr.Read())
-            {                
-                connection.Close();
-                return acc.Name;
+            UserDetails userDetails;
 
+            using (var context = new LoginDataBaseContext())
+            {
+                userDetails = context.UserDetails
+                             .Where(user => user.UserName == acc.UserName)
+                             .Where(user => user.Password == acc.Password)
+                             .FirstOrDefault();
             }
-            else
-                connection.Close();
 
+            if (userDetails != null)
+                return acc.UserName;
+            
             return "Error";
         }
 
-        public bool IsEmployer(Account acc)
+        //Employer/employee path
+       public bool IsEmployer(Account acc)
         {
-            ConnectionString();
-            connection.Open();
-            com.Connection = connection;
-            com.CommandText = "select IsEmployer from dbo.UserDetails where UserName='" + acc.Name + "' and Password='" + acc.Password + "'";
-          
-            using (var reader = com.ExecuteReader())
+            
+            UserDetails userDetails;
+
+            using (var context = new LoginDataBaseContext())
             {
-
-                if (reader.Read())
-                {
-
-                    acc.IsEmployer = reader.GetBoolean(0);
-                    connection.Close();
-
-
-                    return acc.IsEmployer;
-
-                }
-                else
-                    connection.Close();
-
-                return false;
+                userDetails = context.UserDetails
+                       .Where(user => user.UserName == acc.UserName)
+                       .Where(user => user.Password == acc.Password)
+                       .FirstOrDefault();
             }
+
+            if (userDetails.IsEmployer == true)
+                return true;
+
+            return false;
         }
 
             
@@ -74,24 +66,28 @@ namespace EmployeeLog.Data
         {
             try
             {
-                ConnectionString();
-                connection.Open();
-                com.Connection = connection;
-                com.CommandText = "INSERT INTO UserDetails([UserName], [Password], [FirstName], [Surname], [IsEmployer]) VALUES ('" + acc.Name + "', '" + acc.Password + "','" + acc.FirstName + "', '" + acc.Surname + "' , '"+acc.IsEmployer+ "' )";
-
-                dr = com.ExecuteReader();
-
-                connection.Close();
+               
+         
+                using (var context = new LoginDataBaseContext())
+                {
+                 
+                    context.Add(acc);
+                  
+                    context.SaveChanges();
+                    
+                }
+          
                 return acc.FirstName;
 
                 // return View("~/Views/Account/Create.cshtml");    //success view!!   redirect to view in another folder??
             }
+
             catch (Exception exception)
             {
                 Console.WriteLine("THERE HAS BEEN AN ERROR!  " + exception.Message);
                 Console.WriteLine(" SQL statement :   " + com.CommandText);
                 connection.Close();
-                return "Error";  //Error view  :(
+                return "Error";  
 
             }
         }

@@ -5,15 +5,17 @@
 }
 <link href="~/style/StyleSheet1.css" rel="stylesheet" />
 
+
 <div class="main-page-fill">
-    <div class="grid-item news-grid" >
-        
+    <div class="grid-item news-grid">
+
         <h3>News</h3>
         <p> This is a test, consectetur adipiscing elit. Sed eget diam nec metus vestibulum ultricies et ut nibh. Quisque ullamcorper mi eget lorem auctor, id pharetra nibh condimentum. Curabitur egestas pharetra posuere. Nullam quis eleifend orci. Nulla posuere maximus feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque at interdum dui, a semper quam. Praesent aliquet mauris nunc. Etiam sodales lectus lectus, eu sodales neque dapibus hendrerit. Sed accumsan sollicitudin sapien, id porttitor lacus. Suspendisse ac suscipit mi, in dictum eros. Curabitur arcu urna, facilisis id elementum a, facilisis quis dui. In hac habitasse platea dictumst. Nam non elit in quam bibendum placerat laoreet sed ligula.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget diam nec metus vestibulum ultricies et ut nibh. Quisque ullamcorper mi eget lorem auctor, id pharetra nibh condimentum. Curabitur egestas pharetra posuere. Nullam quis eleifend orci. Nulla posuere maximus feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque at interdum dui, a semper quam. Praesent aliquet mauris nunc. Etiam sodales lectus lectus, eu sodales neque dapibus hendrerit. Sed accumsan sollicitudin sapien, id porttitor lacus. Suspendisse ac suscipit mi, in dictum eros. Curabitur arcu urna, facilisis id elementum a, facilisis quis dui. In hac habitasse platea dictumst. Nam non elit in quam bibendum placerat laoreet sed ligula.</p>
-   
-    </div>
 
+    </div>
+    
+   
 
     <div class="grid-item">
 
@@ -25,14 +27,149 @@
             JobCentre Online is an online platform designed by the Department for Communities to support jobseekers find the right roles and employers the best suited employees. The free service allows employers to register with Employers Online and have their vacancies posted on JCOL the same day.
 
             Employers in the hospitality sector can notify and manage their job vacancies online in a quick, easy and convenient way and can enter job specifications, qualifications required, wage details and any other requirements specific to their vacancies, with the ability to manage the account online 24/7.
-        </p>
+        </p> 
 
     </div>
 
 
-    <div class="grid-item">3</div>
+
+
+    <div id="quiz" class="grid-item">
+       
+            <h1>Quiz</h1>
+            <h2 id="question" class="headline-secondary--grouped"></h2>
+            <h3 id="score"></h3>
+
+            <p id="choice0"></p>
+            <button id="guess0" class="btn--default">Select Answer</button>
+
+            <p id="choice1"></p>
+            <button id="guess1" class="btn--default">Select Answer</button>
+            <p id="choice2"></p>
+            <button id="guess2" class="btn--default">Select Answer</button>
+            
+            
+                <p id="progress">Question x of y</p>
+
+    </div>
+   
+
     <div class="grid-item">4</div>
     
 
+   
+
+
+
+    
 
 </div>
+
+<!--JAVASCRIPT quiz practising javascript-->
+
+<script type="text/javascript">
+  
+
+    function Quiz(questions) {
+        this.score = 0;
+        this.questions = questions;
+        this.currentQuestionIndex = 0;
+    }
+
+    Quiz.prototype.guess = function (answer) {
+        if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
+            this.score++;
+        }
+        this.currentQuestionIndex++;
+
+    };
+    Quiz.prototype.getCurrentQuestion = function () {
+        return this.questions[this.currentQuestionIndex];
+    };
+    Quiz.prototype.hasEnded = function () {
+        return this.currentQuestionIndex >= this.questions.length;
+    };
+    function Question(text, choices, answer) {
+        this.text = text;
+        this.choices = choices;
+        this.answer = answer;
+    }
+
+    Question.prototype.isCorrectAnswer = function (choice) {
+        return this.answer === choice;
+    };
+    var QuizUI = {
+        displayNext: function () {
+
+            if (quiz.hasEnded())
+            {
+                this.displayScore();
+
+            } else {
+                this.displayQuestion();
+                this.displayChoices();
+                this.displayProgress();
+            }
+        },
+        displayQuestion: function () {
+            this.populateIdWithHTML("question", quiz.getCurrentQuestion().text);
+        },
+        displayChoices: function () {
+            var choices = quiz.getCurrentQuestion().choices;
+
+            for (var i = 0; i < choices.length; i++) {
+                this.populateIdWithHTML("choice" + i, choices[i]);
+
+                this.guessHandler("guess" + i, choices[i]);
+            }
+        },
+        displayScore: function () {
+            var gameOverHTML = "<h1> Game Over</h2>";
+            gameOverHTML += "<h2> Your score is:" + quiz.score + "</h2>";
+
+            this.populateIdWithHTML("quiz", gameOverHTML);
+        },
+        populateIdWithHTML:
+            function (id, text) {
+                var element =
+                    document.getElementById(id);
+                element.innerHTML = text;
+            },
+        guessHandler:
+            function (id, guess) {
+                var button = document.getElementById(id);
+                button.onclick = function () {
+                    quiz.guess(guess);
+
+                    QuizUI.displayNext();
+                }
+            },
+
+        displayProgress: function () {
+            var currentQuestionNumber = quiz.currentQuestionIndex + 1;
+
+            this.populateIdWithHTML("progress", "Question" + currentQuestionNumber +
+                "of" + quiz.questions.length);
+        }
+
+    };
+    // Creating Questions
+
+    var questions = [
+        new Question("Is this a question?", ["Yes", "No", "I dont know"], "Yes"),
+        new Question("Is this another question?", ["Yes", "No", "Of course it is"], "Of course it is"),
+
+        new Question("This isnt another question, is it?",["Yes", "No", "This is dumb"], "Yes"),
+
+        new Question("What is a question?", ["This Is", "Dont know", "a matter requiring resolution or discussion"], "a matter requiring resolution or discussion")
+    ];
+
+    //Create
+    var quiz = new Quiz(questions);
+
+    //display
+    QuizUI.displayNext();
+
+
+</script> 
+

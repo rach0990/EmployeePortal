@@ -25,35 +25,36 @@ namespace EmployeeLog.Controllers
         [HttpPost]
         public ActionResult Verify(Account acc)
         {
-            // PasswordValidator errorPass = new PasswordValidator();
+           //  PasswordValidator errorPass = new PasswordValidator();
             DatabaseConnect db = new DatabaseConnect();
-            string result = db.Verify(acc);
+
+                string result = db.Verify(acc);
 
             if (result != "Error")
             {
                 //go to database
                 bool IsEmployer = db.IsEmployer(acc);
+                Session["UserName"] = acc.UserName;
 
                 if (IsEmployer == true)
                 {
+                   
                     return RedirectToAction("EmployerProfile", "Profile");
-                }               
+                    
+                }
 
                 //else carry on as before
-                Session["UserName"] = acc.Name;
-
+    
                 return RedirectToAction("Profile", "Profile");
 
-
             }
+         
 
 
-            ViewData["Invalid"] = "Invalid username or password";
-            return View("Login");
+                ViewData["Invalid"] = "Invalid username or password";
+                return View("Login");
+                
         }
-        
-            
-        
         
         
 

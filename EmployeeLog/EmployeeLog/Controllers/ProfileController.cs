@@ -11,7 +11,7 @@ namespace EmployeeLog.Controllers
     {
         // GET: Profile
         [HttpGet]
-        public ActionResult Profile()
+        public ActionResult Profile() //Employee page
         {
            /* if(Session["UserName"] == null) //not logged in
             {
@@ -32,7 +32,7 @@ namespace EmployeeLog.Controllers
         [HttpPost]
         public ActionResult ProfileView(Account acc)
         {
-            ViewData["FirstName"] = acc.Name;
+            ViewData["FirstName"] = acc.UserName;
 
             return View();
         }
